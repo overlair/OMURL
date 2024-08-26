@@ -11,11 +11,18 @@ let package = Package(
             name: "OMURL",
             targets: ["OMURL"]),
     ],
+    dependencies: [
+            .package(url: "https://github.com/scinfu/SwiftSoup.git", from: "2.7.1"),
+    ],
+    
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
-            name: "OMURL"),
+            name: "OMURL",
+            dependencies: [
+                .product(name: "SwiftSoup", package: "SwiftSoup"),
+            ]),
         .testTarget(
             name: "OMURLTests",
             dependencies: ["OMURL"]),

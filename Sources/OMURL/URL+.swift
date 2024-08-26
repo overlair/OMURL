@@ -39,8 +39,8 @@ extension URL {
     }
 }
 
-extension URL {
-    func wwwLessHost() -> String? {
+public extension URL {
+    public func wwwLessHost() -> String? {
         guard var host else { return nil }
         if host.starts(with: "www.", by: { a, b in
             a == b
@@ -62,4 +62,11 @@ extension URL {
         
     }
     
+}
+
+
+extension HTTPURLResponse {
+    var ok: Bool {
+        (200...299).contains(statusCode)
+    }
 }
